@@ -12,7 +12,7 @@ Tutorial from http://mroseman.com/scraping-dynamic-pages/ and also https://www.y
 
 Why Selenium is required? This is because some HTML elements involved JavaScript and can only be executed in the internet browser, and that JavaScript will grab data for a webpage. Scrapy does not have the ability to execute this JavaScript.
 
-Make sure chrome driver is downloaded, required by Selenium.
+Make sure chrome driver is downloaded, required by Selenium. Can be downloaded from https://sites.google.com/a/chromium.org/chromedriver/
 
 Chrome driver version is based on the browser, update the google chrom browser to version 77 (latest as of 22 Sep 2019)
 
