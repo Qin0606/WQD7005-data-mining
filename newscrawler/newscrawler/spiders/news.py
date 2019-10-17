@@ -41,6 +41,7 @@ class newsSpider(scrapy.Spider):
     def parse(self, response):
         for row in response.xpath("//table[@class='table table-small'][1]/tbody/tr"):
             l = ItemLoader(item=NewsItem(), selector = row)
+            l.add_xpath('DateTime','td[1]')
             l.add_xpath("news", 'td[2]/a/text()')
                         
             yield l.load_item()
