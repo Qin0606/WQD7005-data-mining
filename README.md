@@ -17,3 +17,10 @@ Make sure chrome driver is downloaded, required by Selenium. Can be downloaded f
 Chrome driver version is based on the browser, update the google chrom browser to version 77 (latest as of 22 Sep 2019)
 
 Download chrome driver for version 77.Put the chromedriver.exe in the directory of the project folder.
+
+#For news sentiment analysis
+Plan:
+1. Clean the date column (may need to convert data type from string to date)
+2. Perform sentiment analysis (lncludes pre-processing and labelling data)
+
+#price linear regression
