@@ -19,3 +19,8 @@ class NewsItem(scrapy.Item):
             input_processor = MapCompose(remove_tags,remove_whitespace),
             output_processor = TakeFirst()
             )
+    
+    DateTime = scrapy.Field(
+            input_processor = MapCompose(remove_tags,remove_whitespace),
+            output_processor = TakeFirst()
+            )
