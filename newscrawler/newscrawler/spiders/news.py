@@ -35,7 +35,7 @@ class newsSpider(scrapy.Spider):
     name = 'news'
         
     def start_requests(self):
-        for i in range(1,11):
+        for i in range(1,501):
             yield scrapy.Request('https://markets.businessinsider.com/news/ressort/commodities?p=%s' % i, callback=self.parse)
             
     def parse(self, response):
