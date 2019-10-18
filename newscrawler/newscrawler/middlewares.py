@@ -89,7 +89,7 @@ class NewscrawlerDownloaderMiddleware(object):
         # - or raise IgnoreRequest: process_exception() methods of
         #   installed downloader middleware will be called
         my_url = []
-        for i in range(1,11):
+        for i in range(1,501):
             my_url.append('https://markets.businessinsider.com/news/ressort/commodities?p=' + str(i))
         
         if request.url not in my_url:
