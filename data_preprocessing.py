@@ -20,18 +20,6 @@ goldprice['trend'] = ''
 
 goldprice['date_text'] = pd.to_datetime(goldprice['date_text'])
 
-
-#for i in range (len(goldprice)):
-#    if i == 0:
-#        goldprice['trend'][i] = ''
-#    else:
-#        if goldprice['closing_price'][i] > goldprice['closing_price'][i+1]:
-#            goldprice['trend'][i] = 'upward'
-#        elif goldprice['closing_price'][i]== goldprice['closing_price'][i-1]:
-#            goldprice['trend'][i] = 'maintain'
-#        else:
-#            goldprice['trend'][i] = 'downward'
-
 for i in range (1,len(goldprice)):
         if goldprice['closing_price'][i] > goldprice['closing_price'][i+1]:
             goldprice['trend'][i] = 'upward'
@@ -51,10 +39,15 @@ def get_month(x):
 
 goldprice['day'] = goldprice['date_text'].apply(get_day)
 goldprice['month'] = goldprice['date_text'].apply(get_month)
+goldprice.to_csv('goldprice_preprocessed.csv')
+
 
 day_count = goldprice.groupby('day')['closing_price'].count()
 day_mean = goldprice.groupby('day')['closing_price'].mean()
 month_count = goldprice.groupby('month')['closing_price'].count()
 month_mean = goldprice.groupby('month')['closing_price'].mean()
 
-rint(month)
+day_count.to_csv('day_count.csv')
+day_mean.to_csv('day_mean.csv')
+month_count.to_csv('month_count.csv')
+month_mean.to_csv('month_mean.csv')
