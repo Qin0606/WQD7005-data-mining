@@ -16,9 +16,10 @@ goldprice = pd.read_csv('goldprice.csv',thousands=',')
 goldprice.info()
 goldprice.describe()
 len(goldprice)
-goldprice['trend'] = ''
 
 goldprice['date_text'] = pd.to_datetime(goldprice['date_text'])
+
+goldprice['trend'] = ''
 
 for i in range (1,len(goldprice)):
         if goldprice['closing_price'][i] > goldprice['closing_price'][i+1]:
@@ -34,10 +35,14 @@ goldprice.dropna(inplace=True)
 def get_day(x):
     return x.day_name()
 
+def get_day_no(x):
+    return x.weekday()
+
 def get_month(x):
     return x.month_name()
 
 goldprice['day'] = goldprice['date_text'].apply(get_day)
+goldprice['day_no'] = goldprice['date_text'].apply(get_day_no)
 goldprice['month'] = goldprice['date_text'].apply(get_month)
 goldprice.to_csv('goldprice_preprocessed.csv')
 
