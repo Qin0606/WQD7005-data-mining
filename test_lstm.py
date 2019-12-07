@@ -106,15 +106,25 @@ for i in range(2,367):
 X_test= np.array(X_test)
 X_test = np.reshape(X_test,(X_test.shape[0],X_test.shape[1],1))
 
-predicted_stock_price = regressor.predict(X_test)
-predicted_stock_price = sc.inverse_transform(predicted_stock_price)
+predicted_gold_price = regressor.predict(X_test)
+predicted_gold_price = sc.inverse_transform(predicted_gold_price)
 
 plt.plot(real_gold_price, color='blue', label='Real Gold Price')
-plt.plot(predicted_stock_price, color='red', label='Predicted Gold Price')
-plt.plot(training_set)
+plt.plot(predicted_gold_price, color='red', label='Predicted Gold Price')
 plt.legend()
-plt.title('Real vs Predicted Google Stock Price')
+plt.title('Real vs Predicted Gold Price')
 plt.xlabel('time')
-plt.ylabel('Google Stock Price')
+plt.ylabel('Gold Price')
 
+#Evaluate the result
+#define a function for MAPE as there is no built-in function
+def mean_absolute_percentage_error(y_true, y_pred): 
+    y_true, y_pred = np.array(y_true), np.array(y_pred)
+    return np.mean(np.abs((y_true - y_pred) / y_true)) * 100
+
+print('MAE:', metrics.mean_absolute_error(real_gold_price[:365], predicted_gold_price))
+print('MAPE:', mean_absolute_percentage_error(real_gold_price[:365], predicted_gold_price)) #14.77%
+print('MSE:', metrics.mean_squared_error(real_gold_price[:365], predicted_gold_price))
+print('RMSE:', np.sqrt(metrics.mean_squared_error(real_gold_price[:365], predicted_gold_price)))
+print('R2:', metrics.r2_score(real_gold_price[:365], predicted_gold_price)) #0.87!
 
