@@ -123,8 +123,8 @@ def mean_absolute_percentage_error(y_true, y_pred):
     return np.mean(np.abs((y_true - y_pred) / y_true)) * 100
 
 print('MAE:', metrics.mean_absolute_error(real_gold_price[:365], predicted_gold_price))
-print('MAPE:', mean_absolute_percentage_error(real_gold_price[:365], predicted_gold_price)) #14.77%
+print('MAPE:', mean_absolute_percentage_error(real_gold_price[:365], predicted_gold_price)) 
 print('MSE:', metrics.mean_squared_error(real_gold_price[:365], predicted_gold_price))
 print('RMSE:', np.sqrt(metrics.mean_squared_error(real_gold_price[:365], predicted_gold_price)))
-print('R2:', metrics.r2_score(real_gold_price[:365], predicted_gold_price)) #0.87!
+print('R2:', metrics.r2_score(real_gold_price[:365], predicted_gold_price)) 
 
